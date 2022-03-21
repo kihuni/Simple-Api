@@ -2,8 +2,10 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 
-const PORT = 8000
 app.use(cors())
+
+const PORT = 8000
+
 
 let people = {
     'stephen':{
@@ -23,6 +25,11 @@ let people = {
         'age':27,
         'name':'mike',
         'birthLocation':'nairobi'
+    },
+    'unknown':{
+        'age': 'unknown',
+        'name': 'unknown',
+        'birthLocation':'nairobi' 
     }
 
 }
@@ -31,9 +38,10 @@ app.get('/', (req,res) =>{
  res.sendFile(__dirname + '/index.html')
 })
 
-app.get('/api/people/:birthLocation', (req,res)=>{
-    let req = req.params.birthLocation
-    res.json(people)
+app.get('/api/people/:peopleName', (req,res)=>{
+    const peopleName = req.params.peopleName
+    console.log(peopleName)
+    res.json(people[peopleName])
 })
 
 app.listen(PORT, ()=>{
