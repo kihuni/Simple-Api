@@ -1,5 +1,4 @@
-
-const items = document.querySelector('button').addEventListener('click', getDetails)
+document.querySelector('button').addEventListener('click', getDetails)
 
 async function getDetails(){
     try{

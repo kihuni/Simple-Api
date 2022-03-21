@@ -5,7 +5,7 @@ const app = express()
 const PORT = 8000
 app.use(cors())
 
-const people = {
+let people = {
     'stephen':{
 
         'age':28,
@@ -31,7 +31,8 @@ app.get('/', (req,res) =>{
  res.sendFile(__dirname + '/index.html')
 })
 
-app.get('/api/people', (req,res)=>{
+app.get('/api/people/:birthLocation', (req,res)=>{
+    let req = req.params.birthLocation
     res.json(people)
 })
 
